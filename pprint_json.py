@@ -1,7 +1,11 @@
 import json
 import sys
+import os
+
 
 def load_data(filepath):
+    if not os.path.exists(filepath):
+        return None
     with open(filepath, 'r') as j_file:
         data = json.load(j_file)
     return data
