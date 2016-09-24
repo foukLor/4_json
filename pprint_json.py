@@ -1,13 +1,20 @@
 import json
-
+import sys
 
 def load_data(filepath):
-    pass
+    with open(filepath, 'r') as j_file:
+        data = json.load(j_file)
+    return data
 
 
 def pretty_print_json(data):
-    pass
+    print(json.dumps(data, sort_keys = True, indent = 4, 
+                        separators = (':', ',')))
 
 
 if __name__ == '__main__':
-    pass
+    if len(sys.argv) != 2:
+        sys.exit("Usage: python3.5 pprint_json.py filepath")
+    data = load_data(sys.argv[1])
+    if data is not None:
+        pretty_print_json(data)
